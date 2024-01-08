@@ -25,18 +25,225 @@ var muteUnmuteButton = document.querySelector("#muteButton");
 var currentVol = volumeBar.value;
 var currentPlay;
 
+// All song names
+var allSideSongNames = document.querySelectorAll(".side-song-name");
+var allCardSongNames = document.querySelectorAll(".card-song-name");
+
+// Adjusting Greeting Messege
+var date = new Date();
+var greetingMessege;
+
+if (date.getHours() < 12){
+    greetingMessege = "Good Morning";
+} else if (date.getHours() < 18){
+    greetingMessege = "Good Afternoon";
+} else{
+    greetingMessege = "Good Evening";
+}
+document.querySelector(".greeting-text").textContent = greetingMessege;
+
 // song details list
 var songDetails = [
-    {songName: "", songCode: "Song-1", filePath: "./songs/1.mp3", coverPath: "./covers/1.jpg"},
-    {songName: "", songCode: "Song-2", filePath: "./songs/2.mp3", coverPath: "./covers/2.jpg"},
-    {songName: "", songCode: "Song-3", filePath: "./songs/3.mp3", coverPath: "./covers/3.jpg"},
-    {songName: "", songCode: "Song-4", filePath: "./songs/4.mp3", coverPath: "./covers/4.jpg"},
-    {songName: "", songCode: "Song-5", filePath: "./songs/5.mp3", coverPath: "./covers/5.jpg"},
-    {songName: "", songCode: "Song-6", filePath: "./songs/6.mp3", coverPath: "./covers/6.jpg"},
-    {songName: "", songCode: "Song-7", filePath: "./songs/7.mp3", coverPath: "./covers/7.jpg"},
-    {songName: "", songCode: "Song-8", filePath: "./songs/8.mp3", coverPath: "./covers/8.jpg"},
-    {songName: "", songCode: "Song-9", filePath: "./songs/9.mp3", coverPath: "./covers/9.jpg"}
+    {
+        songName: "Hanuman Chalisa",
+        songCode: "Song-1",
+        filePath: "./songs/Hanuman chalisa.mp3",
+        coverPath: "./covers/1.jpg"
+    },
+    {
+        songName: "Geetabitan Er Dibbi",
+        songCode: "Song-2",
+        filePath: "./songs/geetabitan er dibbi.mp3",
+        coverPath: "./covers/2.png"
+    },
+    {
+        songName: "Shindurlal Chadhayo",
+        songCode: "Song-3",
+        filePath: "./songs/shindurlal chadhayo.mp3",
+        coverPath: "./covers/3.jpg"
+    },
+    {
+        songName: "Shree Ram Chandra Kripalu",
+        songCode: "Song-4",
+        filePath: "./songs/shree ram chandra kripalu.mp3",
+        coverPath: "./covers/4.jpg"
+    },
+    {
+        songName: "Cheques",
+        songCode: "Song-5",
+        filePath: "./songs/Cheques.mp3",
+        coverPath: "./covers/5.png"
+    },
+    {
+        songName: "One love",
+        songCode: "Song-6",
+        filePath: "./songs/one love.mp3",
+        coverPath: "./covers/6.png"
+    },
+    {
+        songName: "Cheap thrills",
+        songCode: "Song-7",
+        filePath: "./songs/cheap thrills.mp3",
+        coverPath: "./covers/7.png"
+    },
+    {
+        songName: "Until I found you",
+        songCode: "Song-8",
+        filePath: "./songs/until I found you.mp3",
+        coverPath: "./covers/8.png"
+    },
+    {
+        songName: "Sarangi",
+        songCode: "Song-9",
+        filePath: "./songs/sarangi.mp3",
+        coverPath: "./covers/9.png"
+    },
+    {
+        songName: "Choo lo",
+        songCode: "Song-10",
+        filePath: "./songs/choo lo.mp3",
+        coverPath: "./covers/10.png"
+    },
+    {
+        songName: "Mangal Bhavan",
+        songCode: "Song-11",
+        filePath: "./songs/mangal bhavan.mp3",
+        coverPath: "./covers/11.jpg"
+    },
+    {
+        songName: "Milon Hobe Kotodine",
+        songCode: "Song-12",
+        filePath: "./songs/milon hobe kotodine.mp3",
+        coverPath: "./covers/12.jpg"
+    },
+    {
+        songName: "Night changes",
+        songCode: "Song-13",
+        filePath: "./songs/night changes.mp3",
+        coverPath: "./covers/13.png"
+    },
+    {
+        songName: "Oviman",
+        songCode: "Song-14",
+        filePath: "./songs/oviman.mp3",
+        coverPath: "./covers/14.png"
+    },
+    {
+        songName: "Phagun Haway",
+        songCode: "Song-15",
+        filePath: "./songs/phagun haway.mp3",
+        coverPath: "./covers/15.jpg"
+    },
+    {
+        songName: "Dandelions",
+        songCode: "Song-16",
+        filePath: "./songs/dandelions.mp3",
+        coverPath: "./covers/16.png"
+    },
+    {
+        songName: "Saibo",
+        songCode: "Song-17",
+        filePath: "./songs/saibo.mp3",
+        coverPath: "./covers/17.png"
+    },
+    {
+        songName: "Sajani",
+        songCode: "Song-18",
+        filePath: "./songs/sajani.mp3",
+        coverPath: "./covers/18.png"
+    },
+    {
+        songName: "Gulabi sharara",
+        songCode: "Song-19",
+        filePath: "./songs/gulabi sharara.mp3",
+        coverPath: "./covers/19.png"
+    },
+    {
+        songName: "Jeno tomari kache",
+        songCode: "Song-20",
+        filePath: "./songs/jeno tomari kache.mp3",
+        coverPath: "./covers/20.png"
+    },
+    {
+        songName: "Fwa Bagha re",
+        songCode: "Song-21",
+        filePath: "./songs/fwa bagha re.mp3",
+        coverPath: "./covers/21.png"
+    },
+    {
+        songName: "Maya",
+        songCode: "Song-22",
+        filePath: "./songs/maya.mp3",
+        coverPath: "./covers/22.png"
+    },
+    {
+        songName: "Benche thakar gaan",
+        songCode: "Song-23",
+        filePath: "./songs/benche thakar gaan.mp3",
+        coverPath: "./covers/23.png"
+    },
+    {
+        songName: "A thousand years",
+        songCode: "Song-24",
+        filePath: "./songs/a thousand years.mp3",
+        coverPath: "./covers/24.png"
+    },
+    {
+        songName: "Let me love you",
+        songCode: "Song-25",
+        filePath: "./songs/let me love you.mp3",
+        coverPath: "./covers/25.png"
+    },
+    {
+        songName: "Perfect",
+        songCode: "Song-26",
+        filePath: "./songs/perfect.mp3",
+        coverPath: "./covers/26.png"
+    },
+    {
+        songName: "Shape of you",
+        songCode: "Song-27",
+        filePath: "./songs/shape of you.mp3",
+        coverPath: "./covers/27.png"
+    },
+    {
+        songName: "Egiye de",
+        songCode: "Song-28",
+        filePath: "./songs/egiye de.mp3",
+        coverPath: "./covers/28.png"
+    },
+    {
+        songName: "Ei bhalo ei kharap",
+        songCode: "Song-29",
+        filePath: "./songs/ei bhalo ei kharap.mp3",
+        coverPath: "./covers/29.png"
+    },
+    {
+        songName: "Love me like you do",
+        songCode: "Song-30",
+        filePath: "./songs/love me like you do.mp3",
+        coverPath: "./covers/30.png"
+    }
 ];
+
+// Adjusting song names
+allSideSongNames.forEach(function(e){
+    for (var i = 0; i < songDetails.length; i++){
+        if (e.classList.contains(songDetails[i].songCode)){
+            e.textContent = songDetails[i].songName;
+            break;
+        }
+    }
+});
+
+allCardSongNames.forEach(function(e){
+    for (var i = 0; i < songDetails.length; i++){
+        if (e.classList.contains(songDetails[i].songCode)){
+            e.textContent = songDetails[i].songName;
+            break;
+        }
+    }
+});
 
 var audio = new Audio(songDetails[0].filePath);
 
@@ -243,7 +450,7 @@ function updateCover(e){
 function updateCurrentSongName(){
     songDetails.forEach(function(e) {
         if (currentPlay.classList.contains(e.songCode)){
-            document.querySelector(".currentSongName").textContent = e.songCode;
+            document.querySelector(".currentSongName").textContent = e.songName;
         }
     });
 }

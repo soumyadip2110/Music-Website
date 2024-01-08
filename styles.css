@@ -107,6 +107,7 @@
     overflow-x: scroll;
     margin-top: 15px;
     margin-bottom: 20px;
+    scroll-behavior: smooth;
 }
 
 .playlist-container::-webkit-scrollbar{
